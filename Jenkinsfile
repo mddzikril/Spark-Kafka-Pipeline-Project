@@ -4,12 +4,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-               sh 'pipenv --python python3 sync'
+               sh '/opt/anaconda3/bin/pipenv --python python3 sync'
             }
         }
         stage('Test') {
             steps {
-               sh 'pipenv run pytest'
+               sh '/opt/anaconda3/bin/pipenv run pytest'
             }
         }
         stage('Package') {
