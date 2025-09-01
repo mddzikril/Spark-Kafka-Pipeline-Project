@@ -11,3 +11,10 @@ def get_spark_session(env):
         return SparkSession.builder \
             .enableHiveSupport() \
             .getOrCreate()
+
+
+def load_df_csv(spark, datafile):
+    return spark.read \
+        .option("header", "true") \
+        .option("inferSchema", "true") \
+        .csv(datafile)
