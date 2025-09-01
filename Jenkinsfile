@@ -4,6 +4,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+	       sh '/opt/anaconda3/bin/pipenv install --dev'
                sh '/opt/anaconda3/bin/pipenv --python python3 sync'
             }
         }
