@@ -4,7 +4,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-               sh '/opt/anaconda3/bin/pipenv --python python3 sync'
+	       sh '/opt/anaconda3/bin/pipenv --python /Users/dzik/.local/share/virtualenvs/Spark-Kafka-Pipeline-Project-2R4D2Lc5/bin/python3.11 install --dev'
+               sh '/opt/anaconda3/bin/pipenv --python /Users/dzik/.local/share/virtualenvs/Spark-Kafka-Pipeline-Project-2R4D2Lc5/bin/python3.11 sync'
             }
         }
         stage('Test') {
