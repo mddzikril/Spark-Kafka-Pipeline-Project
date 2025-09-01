@@ -15,4 +15,7 @@ if __name__ == '__main__':
     spark = Utils.get_spark_session(job_run_env)
     logger = Log4j(spark)
 
+    df = spark.createDataFrame([(1, "Alice"), (2, "Bob")], ["id", "name"])
+    df.show()
+
     logger.info("Finished creating Spark Session")
