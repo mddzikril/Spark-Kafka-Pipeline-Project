@@ -1,13 +1,13 @@
-from pyspark.sql.types import StructField, IntegerType, DateType, StructType, StringType
+from pyspark.sql.types import StructField, IntegerType, DateType, StructType, StringType, TimestampType, LongType
 
 
 def accounts_schema():
     accounts_schema_struct = StructType([
         StructField("load_date", DateType()),
         StructField("active_ind", IntegerType()),
-        StructField("account_id", IntegerType()),
+        StructField("account_id", LongType()),
         StructField("source_sys", StringType()),
-        StructField("account_start_date", DateType()),
+        StructField("account_start_date", TimestampType()),
         StructField("legal_title_1", StringType()),
         StructField("legal_title_2", StringType()),
         StructField("tax_id_type", StringType()),
@@ -22,8 +22,8 @@ def accounts_schema():
 def party_schema():
     party_schema_struct = StructType([
         StructField("load_date", DateType()),
-        StructField("account_id", IntegerType()),
-        StructField("party_id", IntegerType()),
+        StructField("account_id", LongType()),
+        StructField("party_id", LongType()),
         StructField("relation_type", StringType()),
         StructField("relation_start_date", DateType())
     ])

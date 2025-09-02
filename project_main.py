@@ -2,6 +2,7 @@ import sys
 
 from lib import Utils
 from lib.DataReader import read_accounts, read_party_address, read_party
+from lib.DataTransformations import join_accounts_with_party
 from lib.logger import Log4j
 
 if __name__ == '__main__':
@@ -30,7 +31,10 @@ if __name__ == '__main__':
     party_df.show(10)
     party_df.printSchema()
 
-    party_address_df.show(10)
-    party_address_df.printSchema()
+    joined_accounts_party_df = join_accounts_with_party(accounts_df, party_df)
+
+    joined_accounts_party_df.show(10)
+    # party_address_df.show(10)
+    # party_address_df.printSchema()
 
     logger.info("Finished creating Spark Session")
