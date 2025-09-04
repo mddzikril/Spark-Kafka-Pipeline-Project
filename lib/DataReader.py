@@ -34,7 +34,7 @@ def party_schema():
 def party_address_schema():
     party_address_schema_struct = StructType([
         StructField("load_date", DateType()),
-        StructField("party_id", IntegerType()),
+        StructField("party_id", LongType()),
         StructField("address_line_1", StringType()),
         StructField("address_line_2", StringType()),
         StructField("city", StringType()),
