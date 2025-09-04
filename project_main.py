@@ -2,7 +2,8 @@ import sys
 
 from lib import Utils
 from lib.DataReader import read_accounts, read_party_address, read_party
-from lib.DataTransformations import join_accounts_with_party
+from lib.DataTransformations import join_accounts_with_party, join_accounts_party_address, add_event_header, \
+    add_key_header
 from lib.logger import Log4j
 
 if __name__ == '__main__':
@@ -25,16 +26,23 @@ if __name__ == '__main__':
     party_df = read_party(spark, parties_datafile)
     party_address_df = read_party_address(spark, party_address_datafile)
 
-    accounts_df.show(10)
-    accounts_df.printSchema()
+    events_header_accounts_df = add_event_header(accounts_df)
+    events_and_key_header_accounts_df = add_key_header(events_header_accounts_df)
 
-    party_df.show(10)
-    party_df.printSchema()
+    joined_accounts_party_df = join_accounts_with_party(events_and_key_header_accounts_df, party_df)
 
-    joined_accounts_party_df = join_accounts_with_party(accounts_df, party_df)
+    events_and_key_header_accounts_df.show()
 
-    joined_accounts_party_df.show(10)
-    # party_address_df.show(10)
-    # party_address_df.printSchema()
+    logger.info("Num Partitions: " + str(accounts_df.rdd.getNumPartitions()))
+
+    events_and_key_header_accounts_df.write \
+        .format("json") \
+        .mode("overwrite") \
+        .option("path", "final_output") \
+        .save()
+
+    joined_accounts_party_address_df = join_accounts_party_address(joined_accounts_party_df, party_address_df)
+
+    #joined_accounts_party_address_df.sort("account_id").show()
 
     logger.info("Finished creating Spark Session")
