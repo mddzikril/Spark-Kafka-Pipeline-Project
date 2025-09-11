@@ -25,7 +25,7 @@ def party_schema():
         StructField("account_id", LongType()),
         StructField("party_id", LongType()),
         StructField("relation_type", StringType()),
-        StructField("relation_start_date", DateType())
+        StructField("relation_start_date", TimestampType())
     ])
 
     return party_schema_struct
