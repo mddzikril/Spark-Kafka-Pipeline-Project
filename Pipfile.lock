@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "21b18f28cafdf6f9d1f3314d5dd6bfc5af88b6efa3a9d1cd3170faa015fbe4f6"
+            "sha256": "4277aa0f7d54ec1bb674dfe9ffc350264910719031630f29295d66c87623e78e"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -16,6 +16,23 @@
         ]
     },
     "default": {
+        "chispa": {
+            "hashes": [
+                "sha256:0fc1255cd78291381bfbc29d800fc9e6ea45ec9a0b4da723e40f6cc8dd589fb9",
+                "sha256:a6fc103880b0ad196432dd7dcda9f904069026ec9232db60c4540fbeabca4279"
+            ],
+            "index": "pypi",
+            "markers": "python_version >= '3.8' and python_version < '4.0'",
+            "version": "==0.11.1"
+        },
+        "prettytable": {
+            "hashes": [
+                "sha256:3c64b31719d961bf69c9a7e03d0c1e477320906a98da63952bc6698d6164ff57",
+                "sha256:b5eccfabb82222f5aa46b798ff02a8452cf530a352c31bddfa29be41242863aa"
+            ],
+            "markers": "python_version >= '3.9'",
+            "version": "==3.16.0"
+        },
         "py4j": {
             "hashes": [
                 "sha256:0b6e5315bb3ada5cf62ac651d107bb2ebc02def3dee9d9548e3baac644ea8dbb",
@@ -30,6 +47,13 @@
             "index": "pypi",
             "markers": "python_version >= '3.8'",
             "version": "==3.5.4"
+        },
+        "wcwidth": {
+            "hashes": [
+                "sha256:3da69048e4540d84af32131829ff948f1e022c1c6bdb8d6102117aac784f6859",
+                "sha256:72ea0c06399eb286d978fdedb6923a9eb47e1c486ce63e9b4e64fc18303972b5"
+            ],
+            "version": "==0.2.13"
         }
     },
     "develop": {

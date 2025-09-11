@@ -8,18 +8,6 @@ def join_df(df1, df2, join_expr, join_type):
     return repartitioned_df1.join(repartitioned_df2, join_expr, join_type)
 
 
-def join_accounts_with_party(accounts_df, party_df):
-    join_expr = accounts_df.account_id == party_df.account_id
-    joined_df = join_df(accounts_df, party_df, join_expr, "left")
-    return joined_df.drop(party_df.account_id)
-
-
-def join_accounts_party_address(joined_accounts_party_df, address_df):
-    join_expr = joined_accounts_party_df.party_id == address_df.party_id
-    joined_df = join_df(joined_accounts_party_df, address_df, join_expr, "left")
-    return joined_df.drop(address_df.party_id)
-
-
 def add_event_header(df):
     event_header_struct = f.struct(
         f.expr("uuid()").alias("eventIdentifier"),
@@ -35,7 +23,7 @@ def add_event_header(df):
 def add_key_header(df):
     key_struct = f.struct(
         f.lit("contractIdentifier").alias("keyField"),
-        df.account_id.cast("string").alias("keyField")
+        df.account_id.cast("string").alias("keyValue")
     )
     key_array = f.array(key_struct)
     new_df = df.withColumn("keys", key_array)
@@ -75,13 +63,13 @@ def join_party_and_address(party_df, address_df):
 
 def add_party_address_struct(df):
     address_struct = f.struct(
-                df.address_line_1.alias("addressLine1"),
-                df.address_line_2.alias("addressLine2"),
-                df.city.alias("addressCity"),
-                df.postal_code.cast(StringType()).alias("addressPostalCode"),
-                df.country_of_address.alias("addressCountry"),
-                df.address_start_date.alias("addressStartDate")
-            )
+        df.address_line_1.alias("addressLine1"),
+        df.address_line_2.alias("addressLine2"),
+        df.city.alias("addressCity"),
+        df.postal_code.cast(StringType()).alias("addressPostalCode"),
+        df.country_of_address.alias("addressCountry"),
+        df.address_start_date.alias("addressStartDate")
+    )
 
     has_address = df.address_line_1.isNotNull()
 
@@ -92,7 +80,7 @@ def add_party_address_struct(df):
             insert_operation(df.party_id.cast(StringType()), "partyIdentifier"),
             insert_operation(df.relation_type, "partyRelationshipType"),
             insert_operation(df.relation_start_date, "partyRelationStartDateTime"),
-            address_insert,
+            address_insert.alias("partyAddress"),
         )
     )
     new_df = new_df.groupBy("account_id").agg(
@@ -124,10 +112,14 @@ def add_payload_header(df):
     return new_df
 
 
+def get_header_columns(df):
+    sorted_df = df.sort("account_id")
+    return sorted_df.select("eventHeader", "keys", "payload")
+
+
 def save_to_json(df):
     repartitioned_df = df.repartition(1)
-    sorted_df = repartitioned_df.sort("account_id")
-    sorted_df.select("eventHeader", "keys", "payload").write \
+    repartitioned_df.write \
         .format("json") \
         .mode("overwrite") \
         .option("path", "final_output") \

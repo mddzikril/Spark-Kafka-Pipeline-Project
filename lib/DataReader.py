@@ -38,7 +38,7 @@ def party_address_schema():
         StructField("address_line_1", StringType()),
         StructField("address_line_2", StringType()),
         StructField("city", StringType()),
-        StructField("postal_code", IntegerType()),
+        StructField("postal_code", StringType()),
         StructField("country_of_address", StringType()),
         StructField("address_start_date", DateType())
     ])

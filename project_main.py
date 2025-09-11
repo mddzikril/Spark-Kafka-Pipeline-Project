@@ -1,5 +1,7 @@
 import sys
 
+import pyspark.sql.functions as f
+
 from lib import Utils, DataReader, DataTransformations, LoadConfig
 from lib.logger import Log4j
 
@@ -41,9 +43,18 @@ if __name__ == '__main__':
     struct_df = DataTransformations.join_party_struct(events_and_key_header_accounts_df, struct)
 
     logger.info("Adding payload header in accounts df")
-    final_df = DataTransformations.add_payload_header(struct_df)
+    payload_accounts_df = DataTransformations.add_payload_header(struct_df)
 
-    logger.info("Separating JSON header columns and saving datafile to JSON")
+    logger.info("Separating header columns")
+    final_df = DataTransformations.get_header_columns(payload_accounts_df)
+
+    logger.info("Saving datafile to JSON")
     DataTransformations.save_to_json(final_df)
+
+    logger.info("Preparing data to send to Kafka")
+    # Kafka only takes a key value pair column
+    kafka_df = final_df.select(f.col("payload.contractIdentifier.newValue").alias("key"),
+                               f.to_json(f.struct("*")).alias("value"))
+
 
     logger.info("Spark job end")
