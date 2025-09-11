@@ -318,3 +318,16 @@ Separating header columns
 Saving datafile to JSON
 Preparing data to send to Kafka
 Spark job end
+Starting spark job in LOCAL mode
+Reading data files
+Adding event header and key header to accounts df
+Join party df with address df
+Generating party relations struct in joined party and address df
+Join party relations struct with accounts df
+Adding payload header in accounts df
+Separating header columns
+Saving datafile to JSON
+Preparing data to send to Kafka
+Sending Data to Kafka
+Finished sending data to Kafka
+Spark job end
