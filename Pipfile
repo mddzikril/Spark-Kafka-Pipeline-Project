@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 pyspark = "==3.5.4"
 pytest = "*"
+chispa = "*"
 
 [dev-packages]
 pytest = "*"
