@@ -47,3 +47,85 @@ Num Partitions: 1
 Finished creating Spark Session
 Num Partitions: 1
 Finished creating Spark Session
+Num Partitions: 1
+Finished creating Spark Session
+Finished creating Spark Session
+Finished creating Spark Session
+Reading data files
+Adding event header and key header
+Join party with address
+Grouping by account id in joined party and address dataframe
+Finished creating Spark Session
+Reading data files
+Adding event header and key header
+Join party with address
+Grouping by account id in joined party and address dataframe
+Finished creating Spark Session
+Reading data files
+Adding event header and key header
+Join party with address
+Grouping by account id in joined party and address dataframe
+Reading data files
+Adding event header and key header
+Join party with address
+Grouping by account id in joined party and address dataframe
+Reading data files
+Adding event header and key header
+Join party with address
+Grouping by account id in joined party and address dataframe
+Reading data files
+Adding event header and key header
+Join party with address
+Grouping by account id in joined party and address dataframe
+Finished creating Spark Session
+Reading data files
+Adding event header and key header
+Join party with address
+Grouping by account id in joined party and address dataframe
+Finished creating Spark Session
+Reading data files
+Adding event header and key header
+Join party with address
+Grouping by account id in joined party and address dataframe
+Reading data files
+Adding event header and key header
+Join party with address
+Grouping by account id in joined party and address dataframe
+Finished creating Spark Session
+Reading data files
+Adding event header and key header
+Join party with address
+Grouping by account id in joined party and address dataframe
+Finished creating Spark Session
+Reading data files
+Adding event header and key header
+Join party with address
+Generating party relations struct
+Join party relations struct with accounts df
+Adding payload header
+Saving datafile to JSON
+Finished creating Spark Session
+Reading data files
+Adding event header and key header
+Join party with address
+Generating party relations struct
+Join party relations struct with accounts df
+Adding payload header
+Saving datafile to JSON
+Finished creating Spark Session
+Reading data files
+Adding event header and key header
+Join party with address
+Generating party relations struct
+Join party relations struct with accounts df
+Adding payload header
+Saving datafile to JSON
+Finished creating Spark Session
+Reading data files
+Adding event header and key header
+Join party with address
+Generating party relations struct
+Join party relations struct with accounts df
+Adding payload header
+Saving datafile to JSON
+Finished creating Spark Session
