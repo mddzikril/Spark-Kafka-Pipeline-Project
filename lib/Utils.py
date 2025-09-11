@@ -1,10 +1,13 @@
 from pyspark.sql import SparkSession
 
+from lib.LoadConfig import get_spark_conf
+
 
 def get_spark_session(env):
     if env == "LOCAL":
         return SparkSession.builder \
-            .master("local[2]") \
+            .config(conf=get_spark_conf(env)) \
+            .master("local[3]") \
             .enableHiveSupport() \
             .getOrCreate()
     else:

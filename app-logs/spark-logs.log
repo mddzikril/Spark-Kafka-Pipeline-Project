@@ -129,3 +129,58 @@ Join party relations struct with accounts df
 Adding payload header
 Saving datafile to JSON
 Finished creating Spark Session
+Starting spark program
+Reading data files
+Adding event header and key header
+Join party with address
+Generating party relations struct
+Join party relations struct with accounts df
+Adding payload header
+Separating header columns and saving datafile to JSON
+Spark program end
+Starting spark job in LOCAL mode
+Starting spark job in LOCAL mode
+Reading data files
+Adding event header and key header
+Join party with address
+Generating party relations struct
+Join party relations struct with accounts df
+Adding payload header
+Separating header columns and saving datafile to JSON
+Spark job end
+Starting spark job in LOCAL mode
+Reading data files
+Adding event header and key header to accounts df
+Join party df with address df
+Generating party relations struct in joined party and address df
+Join party relations struct with accounts df
+Adding payload header in accounts df
+Separating JSON header columns and saving datafile to JSON
+Spark job end
+Starting spark job in LOCAL mode
+Reading data files
+Adding event header and key header to accounts df
+Join party df with address df
+Generating party relations struct in joined party and address df
+Join party relations struct with accounts df
+Adding payload header in accounts df
+Separating JSON header columns and saving datafile to JSON
+Spark job end
+Starting spark job in LOCAL mode
+Reading data files
+Adding event header and key header to accounts df
+Join party df with address df
+Generating party relations struct in joined party and address df
+Join party relations struct with accounts df
+Adding payload header in accounts df
+Separating JSON header columns and saving datafile to JSON
+Spark job end
+Starting spark job in LOCAL mode
+Reading data files
+Adding event header and key header to accounts df
+Join party df with address df
+Generating party relations struct in joined party and address df
+Join party relations struct with accounts df
+Adding payload header in accounts df
+Separating JSON header columns and saving datafile to JSON
+Spark job end
