@@ -95,7 +95,7 @@ def test_spark_version(spark):
 
 def test_get_config():
     conf_local = LoadConfig.get_config("LOCAL")
-    assert conf_local["kafka.topic"] == "spark_project_kafka_cloud"
+    assert conf_local["kafka.topic"] == "spark-pipeline-dev"
 
 
 def test_read_accounts(spark):
